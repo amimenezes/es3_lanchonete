@@ -17,6 +17,7 @@ public class Main {
 		//sysout ctrl + espaço
 		System.out.println("Bem-vindo à Lanchonete da Engenharia de Software 3!");
 		System.out.println("Adicionando outra linha");
+		System.out.println("Adicionando a última linha da noite");
 
 
 	}

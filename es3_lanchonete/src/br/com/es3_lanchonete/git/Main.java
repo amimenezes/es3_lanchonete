@@ -20,8 +20,7 @@ public class Main {
 		System.out.println("Adicionando a última linha da noite");
 		System.out.println("Bruno");
 		System.out.println("New line in Main, M.");
-
-
+		System.out.println("Added new line in Main, one more time, M.");
 	}
 
 }

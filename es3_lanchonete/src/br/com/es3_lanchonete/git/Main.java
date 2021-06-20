@@ -16,10 +16,8 @@ public class Main {
 		// TODO Auto-generated method stub
 		//sysout ctrl + espaço
 		System.out.println("Bem-vindo à Lanchonete da Engenharia de Software 3!");
-		System.out.println("Add uma nova linha");
-		System.out.println("Add outra nova linha");
-		System.out.println("Add terceira nova linha");
-		System.out.println("Add quarta nova linha");
+		System.out.println("Adicionando outra linha");
+
 
 	}
 

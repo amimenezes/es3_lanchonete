@@ -16,7 +16,6 @@ public class Main {
 		// TODO Auto-generated method stub
 		//sysout ctrl + espaço
 		System.out.println("Bem-vindo à Lanchonete da Engenharia de Software 3!");
-		System.out.println("Ueber");
 
 	}
 

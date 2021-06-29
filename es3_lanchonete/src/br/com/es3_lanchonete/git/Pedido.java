@@ -58,11 +58,4 @@ public class Pedido {
 	public void setObservacao(String observacao) {
 		this.observacao = observacao;
 	}
-	
-	
-	
-}
-
-public class Pedido {
-
 }

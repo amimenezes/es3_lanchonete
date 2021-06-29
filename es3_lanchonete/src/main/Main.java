@@ -1,7 +1,9 @@
 /**
  * 
  */
-package br.com.es3_lanchonete.git;
+package main;
+
+import br.com.es3_lanchonete.git.Pedido;
 
 /**
  * @author Chele

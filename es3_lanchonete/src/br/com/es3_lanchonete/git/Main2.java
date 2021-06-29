@@ -19,8 +19,12 @@ public class Main2 {
 		System.out.println("Adicionando outra linha");
 		System.out.println("Adicionando a última linha da noite");
 		System.out.println("Bruno");
+<<<<<<< HEAD
 
 
+=======
+		System.out.println("Michele");
+>>>>>>> branch 'main' of https://github.com/mml88/es3_lanchonete.git
 	}
 
 }

@@ -1,7 +1,9 @@
 /**
  * 
  */
-package br.com.es3_lanchonete.git;
+package main;
+
+import br.com.es3_lanchonete.git.Pedido;
 
 /**
  * @author Chele
@@ -22,7 +24,7 @@ public class Main {
 		System.out.println("New line in Main, M.");
 		System.out.println("Added new line in Main, one more time, M.");
 		System.out.println("Teste Bruno 28-06");
-		sysout
+		System.out.println("blablabla");
 	}
 
 }

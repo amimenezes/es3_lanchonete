@@ -1,4 +1,4 @@
-package br.com.es3_lanchonete.git;
+package br.com.es3_lanchonete.model;
 
 public class Pedido {
 	public int idPedido;
@@ -61,8 +61,4 @@ public class Pedido {
 	
 	
 	
-}
-
-public class Pedido {
-
 }

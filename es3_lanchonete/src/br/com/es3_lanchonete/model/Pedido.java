@@ -5,58 +5,92 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-public class Cliente implements Serializable {
+public class Pedido implements Serializable {
 
-    private int idCliente;
-    private String nome;
-    private String email;
+    private int idPedido;
+    //private Itens itens[];
+    private String nomeCliente;
+    private double valor;
+    private int numMesa;
+    private String status;
+    private String observacao;
+    
 
-    public Cliente() {
+    public Pedido() {
     }
 
-    public Cliente(int idcliente, String nome, String email) {
-        this.idCliente = idcliente;
-        this.nome = nome;
-        this.email = email;
-    }
 
-    public Cliente(String nome, String email) {
-        this(-1, nome, email);
-    }
+    public Pedido(int idPedido, /*Itens itens, */String nomeCliente, double valor, int numMesa, String status, String observacao) {
+        this.idPedido = idPedido;
+        //this.itens = itens;
+        this.nomeCliente = nomeCliente;
+        this.valor = valor;
+        this.numMesa = numMesa;
+        this.status = status;
+        this.observacao = observacao;
+    }    
 
-    public String getNome() {
-        return nome;
-    }
+    public int getIdPedido() {
+		return idPedido;
+	}
 
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
+	public void setIdPedido(int idPedido) {
+		this.idPedido = idPedido;
+	}
 
-    public String getEmail() {
-        return email;
-    }
+	public String getNomeCliente() {
+		return nomeCliente;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
+	public void setNomeCliente(String nomeCliente) {
+		this.nomeCliente = nomeCliente;
+	}
 
-    public int getIdCliente() {
-        return idCliente;
-    }
+	public double getValor() {
+		return valor;
+	}
 
-    public void setIdCliente(int idcliente) {
-        this.idCliente = idcliente;
-    }
+	public void setValor(double valor) {
+		this.valor = valor;
+	}
 
-    @Override
+	public int getNumMesa() {
+		return numMesa;
+	}
+
+	public void setNumMesa(int numMesa) {
+		this.numMesa = numMesa;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getObservacao() {
+		return observacao;
+	}
+
+	public void setObservacao(String observacao) {
+		this.observacao = observacao;
+	}
+
+	
+	@Override
     public int hashCode() {
         int hash = 7;
-        hash = 29 * hash + Objects.hashCode(this.nome);
-        hash = 29 * hash + Objects.hashCode(this.email);
+        hash = 29 * hash + Objects.hashCode(this.nomeCliente);
+        hash = 29 * hash + Objects.hashCode(this.valor);
+        hash = 29 * hash + Objects.hashCode(this.numMesa);
+        hash = 29 * hash + Objects.hashCode(this.status);
+        hash = 29 * hash + Objects.hashCode(this.observacao);
         return hash;
     }
-
-    @Override
+	
+	/*@Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;
@@ -67,7 +101,7 @@ public class Cliente implements Serializable {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Cliente other = (Cliente) obj;
+        final Pedido other = (Pedido) obj;
         if (!Objects.equals(this.nome, other.nome)) {
             return false;
         }
@@ -75,17 +109,17 @@ public class Cliente implements Serializable {
             return false;
         }
         return true;
-    }
+    }*/
     
-    public  List<Cliente> listAll() { return new ClienteDAO().listAll();}
+    public  List<Pedido> listAll() { return new PedidoDAO().listAll();}
     public int insert() {
-        return new ClienteDAO().insert(this);
+        return new PedidoDAO().insert(this);
     }
     public int delete(){
-        return new ClienteDAO().delete(this);
+        return new PedidoDAO().delete(this);
     }
     
     public int update() {
-         return new ClienteDAO().update(this);
+         return new PedidoDAO().update(this);
     }
 }

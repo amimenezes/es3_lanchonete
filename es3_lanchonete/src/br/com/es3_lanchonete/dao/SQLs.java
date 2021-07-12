@@ -1,11 +1,11 @@
 package br.com.es3_lanchonete.dao;
 
 public enum SQLs {
-    INSERT_CLIENTE("insert into cliente(nome, email) values (?, ?)"), 
-    LISTALL_CLIENTE("select * from cliente"),
-    DELETE_CLIENTE("delete from cliente where idcliente=? "),
-    UPDATE_CLIENTE("update cliente set nome=?, email=? where idcliente=?"),
-    FINDID_CLIENTE("select * from cliente where idcliente=?");
+    INSERT_PEDIDO("insert into pedido(nomeCliente, valor, numMesa, status, observacao) values (?, ?, ?, ?, ?)"), 
+    LISTALL_PEDIDO("select * from pedido"),
+    DELETE_PEDIDO("delete from pedido where idpedido=? "),
+    UPDATE_PEDIDO("update pedido set nomeCliente=?, valor=?, numMesa=?, status=?, observacao=? where idcliente=?"),
+    FINDID_PEDIDO("select * from pedido where idpedido=?");
   
     private final String sql;
     SQLs(String sql){

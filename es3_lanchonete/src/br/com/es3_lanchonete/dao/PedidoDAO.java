@@ -12,11 +12,15 @@ public class PedidoDAO implements GenericDAO<Pedido> {
         int chavePrimaria = -1;
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt
-                = connection.prepareStatement(SQLs.INSERT_CLIENTE.getSql(),
+                = connection.prepareStatement(SQLs.INSERT_PEDIDO.getSql(),
                         Statement.RETURN_GENERATED_KEYS)) {
+            stmt.setString(1, obj.getNomeCliente());
+            stmt.setDouble(2, obj.getValor());
+            stmt.setInt(3, obj.getNumMesa());
+            stmt.setString(4, obj.getStatus());
+            stmt.setString(5,  obj.getObservacao());
+            stmt.setInt(6, obj.getIdPedido());
             System.out.println("Conexão aberta!");
-            stmt.setString(1, obj.getNome());
-            stmt.setString(2, obj.getEmail());
             stmt.execute();
             System.out.println("Dados Gravados!");
             ResultSet chaves = stmt.getGeneratedKeys();
@@ -31,20 +35,23 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     }
 
     @Override
-    public List<Cliente> listAll() {
-        List<Cliente> lista = new LinkedList<>();
+    public List<Pedido> listAll() {
+        List<Pedido> lista = new LinkedList<>();
 
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt
-                = connection.prepareStatement(SQLs.LISTALL_CLIENTE.getSql())) {
+                = connection.prepareStatement(SQLs.LISTALL_PEDIDO.getSql())) {
 
             System.out.println("Conexão aberta!");
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                int idcliente = rs.getInt("idcliente");
-                String nome = rs.getString("nome");
-                String email = rs.getString("email");
-                lista.add(new Cliente(idcliente, nome, email));
+                int idPedido = rs.getInt("idPedido");
+                String nomeCliente = rs.getString("nomeCliente");
+                double valor = rs.getDouble("valor");
+                int numMesa = rs.getInt("numMesa");
+                String status = rs.getString("status");
+                String observacao = rs.getString("observacao");
+                lista.add(new Pedido(idPedido, nomeCliente, valor, numMesa, status, observacao));
             }
             connection.close();
             return lista;
@@ -57,14 +64,17 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     }
 
     @Override
-    public int update(Cliente obj) {
+    public int update(Pedido obj) {
         int retorno = -1;
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt
-                = connection.prepareStatement(SQLs.UPDATE_CLIENTE.getSql())) {
-            stmt.setString(1, obj.getNome());
-            stmt.setString(2, obj.getEmail());
-            stmt.setInt(3, obj.getIdCliente());
+                = connection.prepareStatement(SQLs.UPDATE_PEDIDO.getSql())) {
+            stmt.setString(1, obj.getNomeCliente());
+            stmt.setDouble(2, obj.getValor());
+            stmt.setInt(3, obj.getNumMesa());
+            stmt.setString(4, obj.getStatus());
+            stmt.setString(5,  obj.getObservacao());
+            stmt.setInt(6, obj.getIdPedido());
             System.out.println("Conexão aberta!");
             if (stmt.executeUpdate()>0) {
                 retorno = 1;
@@ -79,12 +89,12 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     }
 
     @Override
-    public int delete(Cliente obj) {
+    public int delete(Pedido obj) {
         int retorno = -1;
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt
-                = connection.prepareStatement(SQLs.DELETE_CLIENTE.getSql())) {
-            stmt.setInt(1, obj.getIdCliente());
+                = connection.prepareStatement(SQLs.DELETE_PEDIDO.getSql())) {
+            stmt.setInt(1, obj.getIdPedido());
             if (stmt.executeUpdate()>0) {
                 retorno = 1;
             }
@@ -100,20 +110,25 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     }
 
     @Override
-    public Cliente findByID(int id) {
-        Cliente obj = null;
+    public Pedido findByID(int id) {
+        Pedido obj = null;
         try (Connection connection = new ConnectionFactory().getConnection();
                 PreparedStatement stmt
-                = connection.prepareStatement(SQLs.FINDID_CLIENTE.getSql())) {
+                = connection.prepareStatement(SQLs.FINDID_PEDIDO.getSql())) {
             stmt.setInt(1, id);
 
             System.out.println("Conexão aberta!");
 
             ResultSet rs = stmt.executeQuery();
             while (rs.next()) {
-                String nome = rs.getString("nome");
-                String endereco = rs.getString("email");
-                obj = new Cliente(nome, endereco);
+            	int idPedido = rs.getInt("idPedido");
+                String nomeCliente = rs.getString("nomeCliente");
+                //Itens itens = rs.get??
+                double valor = rs.getDouble("valor");
+                int numMesa = rs.getInt("numMesa");
+                String status = rs.getString("status");
+                String observacao = rs.getString("observacao");
+                obj = new Pedido(idPedido, /*itens,*/nomeCliente, valor, numMesa, status, observacao);
             }
 
         } catch (SQLException e) {
@@ -125,4 +140,3 @@ public class PedidoDAO implements GenericDAO<Pedido> {
     }
 
 }
-

@@ -79,7 +79,7 @@ public class Pedido implements Serializable {
 	}
 
 	
-	@Override
+	/*@Override
     public int hashCode() {
         int hash = 7;
         hash = 29 * hash + Objects.hashCode(this.nomeCliente);
@@ -88,7 +88,7 @@ public class Pedido implements Serializable {
         hash = 29 * hash + Objects.hashCode(this.status);
         hash = 29 * hash + Objects.hashCode(this.observacao);
         return hash;
-    }
+    }*/
 	
 	/*@Override
     public boolean equals(Object obj) {
@@ -117,8 +117,7 @@ public class Pedido implements Serializable {
     }
     public int delete(){
         return new PedidoDAO().delete(this);
-    }
-    
+    }    
     public int update() {
          return new PedidoDAO().update(this);
     }

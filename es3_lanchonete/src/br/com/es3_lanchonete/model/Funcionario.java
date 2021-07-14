@@ -1,7 +1,6 @@
 package br.com.es3_lanchonete.model;
 
 import br.com.es3_lanchonete.dao.FuncionarioDAO;
-import br.com.es3_lanchonete.dao.PedidoDAO;
 
 import java.io.Serializable;
 import java.util.List;
